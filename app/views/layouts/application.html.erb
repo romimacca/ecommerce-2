@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ecommerce</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav clas="navbar navbar-default" style="background: #ccc;">
+      <div class="container">
+        <a href="/" class="navbar-brand">
+          Logo
+        </a>
+        <ul class="nav navbar-nav flex-row">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to('Cerrar Sesion', destroy_user_session_path, metod: :delete, class: "nav-link") %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to('Iniciar Sesion', new_user_session_path, class: "nav-link") %>
+            </li>
+          <% end %>
+          
+
+        </ul>
+      </div>
+    </nav>
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
